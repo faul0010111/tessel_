@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "include": ["approved", "unreviewed"],
+  "default_redistribution": "unreviewed",
+  "components": [
+    {
+      "id": "game-source",
+      "kind": "source",
+      "path": "Assets/Scripts",
+      "redistribution": "approved",
+      "license": "MIT"
+    },
+    {
+      "id": "commercial-sdk",
+      "kind": "dependency",
+      "path": "Assets/Plugins/Vendor",
+      "version": "7.0",
+      "redistribution": "not_permitted",
+      "availability": "external_authorized_acquisition",
+      "license": "LicenseRef-Vendor-EULA",
+      "note": "Commercial SDK: acquire it through authorized means and check the hash in integrity/external.json"
+    }
+  ]
+}

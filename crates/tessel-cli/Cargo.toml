@@ -1,0 +1,38 @@
+[package]
+name = "tessel"
+version = "0.4.0"
+edition = "2024"
+description = "Inventory, export policy and verifiable packages for game projects, plus static analysis of Unity builds"
+license = "MIT OR Apache-2.0"
+rust-version = "1.88"
+readme = "../../README.md"
+keywords = ["gamedev", "unity", "integrity", "preservation", "packaging"]
+categories = ["command-line-utilities", "development-tools"]
+publish = false
+
+[lib]
+name = "tessel_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tessel"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+hex = "0.4"
+walkdir = "2"
+# Linear-time regex engine (no backtracking): safe against ReDoS on untrusted files.
+regex = "1"
+# Deflate only: less decompression code exposed when verifying untrusted packages.
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+tempfile = "3"
